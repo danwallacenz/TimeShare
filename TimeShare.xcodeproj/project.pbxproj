@@ -13,6 +13,7 @@
 		3CF154981E49AA400015CE90 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF154971E49AA400015CE90 /* MessagesViewController.swift */; };
 		3CF1549B1E49AA400015CE90 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF154991E49AA400015CE90 /* MainInterface.storyboard */; };
 		3CF1549D1E49AA400015CE90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CF1549C1E49AA400015CE90 /* Assets.xcassets */; };
+		3CF154A91E49BA240015CE90 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF154A81E49BA240015CE90 /* EventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3CF1549A1E49AA400015CE90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3CF1549C1E49AA400015CE90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CF1549E1E49AA400015CE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CF154A81E49BA240015CE90 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				3CF154971E49AA400015CE90 /* MessagesViewController.swift */,
 				3CF154991E49AA400015CE90 /* MainInterface.storyboard */,
+				3CF154A81E49BA240015CE90 /* EventViewController.swift */,
 				3CF1549C1E49AA400015CE90 /* Assets.xcassets */,
 				3CF1549E1E49AA400015CE90 /* Info.plist */,
 			);
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF154981E49AA400015CE90 /* MessagesViewController.swift in Sources */,
+				3CF154A91E49BA240015CE90 /* EventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
