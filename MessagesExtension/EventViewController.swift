@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Messages
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var dates = [Date]()
     var allVotes = [Int]()
     var ourVotes = [Int]()
+    
+    weak var delegate: MessagesViewController!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,10 +27,52 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func saveSelectedDates(_ sender: Any) {
+    func load(from message: MSMessage?) {
+        
+        guard let message = message else { return }
+        guard let messageURL = message.url else { return }
+        guard let urlComponents = URLComponents(url: messageURL, resolvingAgainstBaseURL: false) else { return }
+        guard let queryItems = urlComponents.queryItems else { return }
+        
+        for item in queryItems {
+            if item.name.hasPrefix("date-") {
+                dates.append(date(from: item.value ?? ""))
+            } else if item.name.hasPrefix("vote-") {
+                let voteCount = Int(item.value ?? "") ?? 0
+                allVotes.append(voteCount)
+                ourVotes.append(0)
+            }
+        }
     }
     
+    func date(from string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
+        return dateFormatter.date(from: string) ?? Date()
+    }
+    
+    @IBAction func saveSelectedDates(_ sender: Any) {
+        var finalVotes = [Int]()
+        
+        for (index, votes) in allVotes.enumerated() {
+            finalVotes.append(votes + ourVotes[index])
+        }
+        
+        delegate.createMessage(with: dates, votes: finalVotes)
+    }
+    
+    
+    // duplicate method
     @IBAction func saveSelectedDates2(_ sender: Any) {
+        
+        var finalVotes = [Int]()
+        
+        for (index, votes) in allVotes.enumerated() {
+            finalVotes.append(votes + ourVotes[index])
+        }
+        
+        delegate.createMessage(with: dates, votes: finalVotes)
     }
     
     @IBAction func addDate(_ sender: Any) {
